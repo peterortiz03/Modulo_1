@@ -1,0 +1,92 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{url}
+
+\begin{document}
+
+\title{Módulo 1 Mecatrónica: Integración de Marcos Ágiles y Optimización mediante Lean Six Sigma}
+
+\author{Pedro Ortiz\inst{1}\orcidID{ }}
+
+\authorrunning{P. Ortiz}
+
+\institute{Universidad Nacional de Cuyo, Instituto de Ingeniería Mecatrónica POBOX 5502 \\
+\email{peter.ortiz03@gmail.com - tomasgarcia@gmail.com}\\
+\url{https://ingenieria.uncuyo.edu.ar/}}
+
+\maketitle
+
+\begin{abstract}
+El presente informe analiza la convergencia entre la agilidad en la gestión de proyectos y la eficiencia en la mejora de procesos. Se explora el marco Scrum como motor de adaptabilidad en entornos de alta incertidumbre, comparándolo y complementándolo con la metodología Lean Six Sigma. Esta última, estructurada bajo certificaciones como White Belt y Green Belt, aporta el rigor estadístico necesario para la reducción de variabilidad y eliminación de desperdicios en procesos industriales. El objetivo es proporcionar una visión holística sobre cómo estas herramientas potencian la calidad y la competitividad en el ámbito de la ingeniería mecatrónica.
+
+\keywords{UNCuyo \and Mecatrónica \and Scrum \and Lean Six Sigma \and DMAIC \and Sprints.}
+\end{abstract}
+
+\section{Introducción}
+En el panorama tecnológico actual, la capacidad de respuesta ante el cambio y la eficiencia operativa son pilares fundamentales. Mientras que las filosofías tradicionales de gestión se basaban en la planificación rígida, el surgimiento de \textit{Agile} y la evolución de \textit{Lean Six Sigma} han redefinido la forma en que se diseñan, producen y mantienen los sistemas complejos.
+
+\section{Filosofía Agile y el Manifiesto Ágil}
+Agile no es una herramienta, sino una mentalidad. Se basa en el Manifiesto Ágil de 2001, que establece que la prioridad absoluta es satisfacer al cliente mediante la entrega temprana y continua de valor. En ingeniería, esto implica que los prototipos funcionales son preferibles a los informes técnicos extensos que no muestran avances tangibles.
+
+\section{El Framework Scrum en Detalle}
+Scrum es una implementación de Agile que divide el trabajo en ciclos iterativos. Es ideal para proyectos donde los requisitos no están completamente definidos desde el inicio.
+
+\subsection{Artefactos del Proceso}
+\begin{itemize}
+    \item \textbf{Product Backlog:} Lista dinámica de todo lo que el producto necesita. Es la única fuente de requisitos.
+    \item \textbf{Sprint Backlog:} El conjunto de elementos seleccionados para ser completados en el ciclo actual.
+    \item \textbf{Incremento:} La suma de todos los elementos del backlog completados durante un Sprint, que debe ser un producto funcional y de calidad.
+\end{itemize}
+
+\subsection{Rituales y Eventos}
+El flujo se mantiene mediante eventos de tiempo limitado (\textit{time-boxed}):
+\begin{itemize}
+    \item \textbf{Sprint Planning:} Donde se define qué se hará y cómo se logrará.
+    \item \textbf{Daily Scrum:} Sesión de 15 minutos para sincronizar actividades y detectar bloqueos.
+    \item \textbf{Sprint Review:} Demostración del incremento a los interesados (\textit{stakeholders}).
+    \item \textbf{Sprint Retrospective:} Análisis interno del equipo para mejorar sus procesos en el siguiente ciclo.
+\end{itemize}
+
+\section{Lean Six Sigma: La Búsqueda de la Perfección Operativa}
+A diferencia de Scrum, Lean Six Sigma se orienta hacia la excelencia en procesos ya establecidos, combinando la velocidad de Lean con la precisión de Six Sigma.
+
+\subsection{Metodología DMAIC}
+El núcleo de Six Sigma es el ciclo DMAIC, fundamental para un nivel de certificación Green Belt:
+\begin{enumerate}
+    \item \textbf{Definir:} Identificar el problema, el cliente y los requisitos críticos de calidad (CTQ).
+    \item \textbf{Medir:} Recolectar datos sobre el rendimiento actual del proceso.
+    \item \textbf{Analizar:} Utilizar herramientas estadísticas para identificar la causa raíz de los defectos.
+    \item \textbf{Mejorar:} Implementar soluciones que ataquen las causas identificadas.
+    \item \textbf{Controlar:} Establecer sistemas de monitoreo (como gráficos de control) para sostener las mejoras en el tiempo.
+\end{enumerate}
+
+\subsection{Eliminación de Desperdicios (Muda)}
+Lean identifica siete desperdicios clásicos que deben ser eliminados en cualquier línea de producción mecatrónica: sobreproducción, esperas, transporte innecesario, sobreprocesamiento, inventario excesivo, movimiento innecesario y defectos.
+
+\section{Sinergia: Agile-Lean en la Ingeniería Mecatrónica}
+La integración de estas metodologías permite una gestión híbrida. Por ejemplo, en el desarrollo de una celda robotizada:
+\begin{itemize}
+    \item Se utiliza \textbf{Scrum} para el desarrollo del software de control y el diseño iterativo de los actuadores (fase de diseño y prototipado).
+    \item Se aplica \textbf{Lean Six Sigma} una vez que el sistema entra en fase de operación para asegurar que el tiempo de ciclo sea óptimo y la tasa de error sea mínima (fase de producción y mantenimiento).
+\end{itemize}
+
+\section{Conclusión}
+Para los estudiantes y profesionales de la Universidad Nacional de Cuyo, dominar tanto marcos ágiles como herramientas estadísticas de calidad no es opcional. La combinación de Scrum para la innovación y Lean Six Sigma para la robustez operativa garantiza productos tecnológicos que no solo son innovadores, sino también fiables y eficientes.
+
+\begin{thebibliography}{8}
+\bibitem{ref_agile}
+Beck, K. et al.: Manifesto for Agile Software Development (2001).
+\bibitem{ref_scrum}
+Schwaber, K., Sutherland, J.: The Scrum Guide. Scrum.org (2020).
+\bibitem{ref_lss}
+George, M. L.: Lean Six Sigma: Combining Six Sigma Quality with Lean Production Speed. McGraw-Hill (2002).
+\bibitem{ref_dmaic}
+Pyzdek, T., Keller, P.: The Six Sigma Handbook. McGraw-Hill Education (2018).
+\end{thebibliography}
+
+\end{document}
