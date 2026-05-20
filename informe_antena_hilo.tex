@@ -1,0 +1,95 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{url}
+
+\begin{document}
+
+\title{Reporte Técnico: Caracterización y Aplicación Práctica de una Antena de Hilo Largo para la Recepción en Bandas de Alta Frecuencia (HF)}
+
+\subtitle{Módulo de Radiofrecuencia e Instrumentación SDR}
+
+\author{Pedro Ortiz\inst{1}}
+
+\authorrunning{P. Ortiz}
+
+\institute{Universidad Nacional de Cuyo, Instituto de Ingeniería Mecatrónica \\
+Mendoza, Argentina \\
+\email{peter.ortiz03@gmail.com}}
+
+\maketitle
+
+\begin{abstract}
+Este reporte analiza el diseño, fundamento y desempeño de una antena de hilo largo (\textit{Long Wire}) aplicada a la recepción de señales en la banda de Alta Frecuencia (HF). El sistema experimental utiliza el mástil de la facultad como soporte elevado, acoplando el elemento radiante a un receptor de radio definido por software (RTL-SDR) mediante un módulo convertidor descendente (\textit{Down Converter}). Se examinan los principios de la propagación ionosférica, los fenómenos de batido de ondas simulados en el entorno R, y los resultados prácticos de monitoreo en los rangos de 7~MHz y 28~MHz que validan la recepción de señales de larga distancia provenientes de Chile y China.
+
+\keywords{Antena Long Wire \and Radiofrecuencia \and HF \and RTL-SDR \and Propagación Ionosférica \and Batido de Ondas.}
+\end{abstract}
+
+\section{Introducción}
+El estudio de los sistemas de radiocomunicación en ingeniería mecatrónica requiere comprender la interacción entre el espectro electromagnético, los elementos radiantes y la instrumentación de procesamiento digital. Mientras que las frecuencias elevadas como VHF se limitan a comunicaciones por línea de vista, las bandas de Alta Frecuencia (HF, entre 3~MHz y 30~MHz) permiten enlaces transcontinentales mediante la reflexión de ondas en la ionosfera. Este documento presenta el análisis técnico de una estación de escucha de onda corta basada en tecnología de radio definido por software (SDR) y una arquitectura de antena de hilo largo.
+
+\section{Fundamentos de la Antena de Hilo Largo (Long Wire)}
+La antena de hilo largo es un monopolo de cable conductor continuo cuya longitud física ($L$) es significativamente mayor que una longitud de onda ($\lambda$) de la frecuencia de trabajo básica, cumpliendo idealmente con la condición:
+\begin{equation}
+L > \lambda
+\end{equation}
+
+A diferencia de un dipolo de media onda, que es una antena resonante de banda angosta, la \textit{Long Wire} exhibe un comportamiento de onda viajera o de onda estacionaria compleja que le otorga características de banda ancha. Esto la vuelve una opción sumamente eficiente para la exploración de múltiples frecuencias sin necesidad de modificar su geometría física.
+
+\subsection{Impedancia y Directividad}
+El principal desafío de esta antena radica en su impedancia característica, la cual no es fija y suele ser muy superior a los 50~$\Omega$ estándar de los equipos de instrumentación de laboratorio. La impedancia de entrada varía en función de la frecuencia y de la altura del hilo respecto al suelo, requiriendo sistemas de acoplamiento inductivo o transformadores de impedancia (como un UNUN 9:1) para maximizar la transferencia de energía hacia el receptor.
+
+En términos de radiación, a medida que la longitud del hilo aumenta en relación a $\lambda$, los lóbulos de ganancia principales de la antena se estrechan y se orientan más cerca de la dirección del propio cable, proporcionando una directividad intrínseca hacia los extremos del tendido.
+
+\section{Sustento Matemático y Simulación del Batido}
+Para el procesamiento de las señales captadas por la antena, se modeló analíticamente el fenómeno de \textit{batido de ondas} mediante scripts de simulación en el lenguaje R. Este fenómeno ocurre al superponer dos señales senoidales de frecuencias próximas ($f_1$ y $f_2$), dando origen a una nueva onda cuya amplitud oscila periódicamente de acuerdo con una envolvente matemática. 
+
+La frecuencia de esta envolvente, o frecuencia de batido ($f_{\text{batido}}$), se define mediante la ecuación:
+\begin{equation}
+f_{\text{batido}} = |f_1 - f_2|
+\end{equation}
+
+Este principio se traslada al hardware mediante el uso de un dispositivo \textit{Down Converter} (mezclador heterodino). Debido a las limitaciones físicas de los sintonizadores RTL-SDR para procesar señales inferiores a los 25~MHz de forma nativa, el \textit{Down Converter} mezcla la señal de HF proveniente del hilo largo con un oscilador local interno de frecuencia fija. La señal resultante, desplazada hacia una frecuencia intermedia más alta, ingresa al rango óptimo de digitalización del SDR.
+
+\section{Aplicación Práctica y Montaje Experimental}
+La implementación física del sistema se estructuró de la siguiente manera:
+\begin{itemize}
+    \item \textbf{Despliegue del Elemento:} Se instaló un cable conductor de longitud aleatoria utilizando el mástil elevado de la facultad como soporte principal, asegurando el despeje de estructuras metálicas linderas para mitigar el acoplamiento capacitivo parásito con el suelo.
+    \item \textbf{Línea de Transmisión:} La alimentación de la antena se derivó mediante cable coaxial acoplado al \textit{Down Converter} y de allí al receptor RTL-SDR conectado a la computadora.
+    \item \textbf{Software de Procesamiento:} Se empleó la plataforma \textit{RTLSDR++} para la visualización del espectro (gráfico de cascada o \textit{waterfall}) y la demodulación de las señales analógicas.
+\end{itemize}
+
+\section{Resultados de Monitoreo y Análisis de Propagación}
+El sistema de hilo largo demostró una alta sensibilidad en las pruebas de espectro, permitiendo sintonizar canales específicos detallados en la Tabla~\ref{tab:monitoreo}.
+
+\begin{table}[htbp]
+\centering
+\caption{Resultados del monitoreo espectral en las bandas de HF.}
+\label{tab:monitoreo}
+\begin{tabular}{ccll}
+\toprule
+\textbf{Banda} & \textbf{Rango sintonizado (MHz)} & \textbf{Procedencia de la Señal} & \textbf{Mecanismo de Propagación} \\ \midrule
+40 metros & 7.050 -- 7.150 & República de Chile & Onda de cielo (Salto regional corto) \\
+10 metros & 28.400 -- 28.500 & República Popular China & Reflexión Ionosférica (Multi-hop) \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Conclusiones}
+La caracterización de la antena de hilo largo evidenció las ventajas de las estructuras no resonantes de bajo costo para la exploración polivalente del espectro de HF. La combinación de esta topología con la flexibilidad del software SDR y convertidores de frecuencia demuestra ser una solución robusta para la recepción de señales de larga distancia. Los datos de acoplamiento e inmunidad al ruido obtenidos sientan los precedentes analíticos y experimentales necesarios para el desarrollo del siguiente hito: el ensamble, calibración mediante NanoVNA y optimización geométrica de la antena direccional compacta Moxon destinada al rastreo de satélites en la banda de VHF.
+
+\begin{thebibliography}{4}
+\bibitem{ref_longwire}
+Antoniou, A.: Antenna Theory and Wave Propagation. McGraw-Hill (2005).
+\bibitem{ref_batido_wave}
+Haykin, S.: Communication Systems. John Wiley \& Sons (2001).
+\bibitem{ref_sdr_rf}
+Artek Manuals: RTL-SDR for Amateur Radio and RF Engineering Projects (2023).
+\bibitem{ref_kraus}
+Kraus, J. D., Marhefka, R. J.: Antennas for All Applications. McGraw-Hill (2002).
+\end{thebibliography}
+
+\end{document}
