@@ -1,4 +1,4 @@
-# Bitácora de Proyecto de TyHM: 
+# Bitácora de Proyecto de TyHM: Mecatrónica
 
 Esta bitácora es el lugar donde voy a ir subiendo el progreso del proyecto que tenemos que realizar el grupo de mecatrónicos el cual incluye: el sistema motorizado para seguir a los satélites, el desarrollo de software para mantener el servidor y poder conectarnos y escuchar desde nuestras casas y el diseño de la antena para captar los rebotes de señales de radio. La idea es registrar acá todo el proceso, desde los primeros bocetos del hardware hasta las pruebas finales de recepción de señal. Se registrará en la bitácora el avance que hacemos en cada clase.
 
